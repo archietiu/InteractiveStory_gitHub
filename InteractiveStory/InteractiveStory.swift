@@ -64,7 +64,7 @@ class Page {
     }
 }
 
-// Tags: switch, tuple
+// Tags: switch, tuple, .some, .none
 extension Page {
     
     func addChoice(title: String, story: Story) -> Page {
@@ -87,22 +87,22 @@ extension Page {
 struct Adventure {
     static var story: Page {
         let returnTrip = Page(story: .ReturnTrip)
-        let touchdown = returnTrip.addChoice("Stop and Investigate", story: .TouchDown)
-        let homeward = returnTrip.addChoice("Continue Home to Earth", story: .Homeward)
-        let rover = touchdown.addChoice("Explore the Rover", story: .Rover)
-        let crate = touchdown.addChoice("Open the Crate", story: .Crate)
+        let touchdown = returnTrip.addChoice(title: "Stop and Investigate", story: .TouchDown)
+        let homeward = returnTrip.addChoice(title: "Continue Home to Earth", story: .Homeward)
+        let rover = touchdown.addChoice(title: "Explore the Rover", story: .Rover)
+        let crate = touchdown.addChoice(title: "Open the Crate", story: .Crate)
         
-        homeward.addChoice("Head back to Mars", page: touchdown)
-        let home = homeward.addChoice("Continue Home to Earth", story: .Home)
+        homeward.addChoice(title: "Head back to Mars", page: touchdown)
+        let home = homeward.addChoice(title: "Continue Home to Earth", story: .Home)
         
-        let cave = rover.addChoice("Explore the Coordinates", story: .Cave)
-        rover.addChoice("Return to Earth", page: home)
+        let cave = rover.addChoice(title: "Explore the Coordinates", story: .Cave)
+        rover.addChoice(title: "Return to Earth", page: home)
         
-        cave.addChoice("Continue towards faint light", story: .Droid)
-        cave.addChoice("Refill the ship and explore the rover", page: rover)
+        cave.addChoice(title: "Continue towards faint light", story: .Droid)
+        cave.addChoice(title: "Refill the ship and explore the rover", page: rover)
         
-        crate.addChoice("Explore the Rover", page: rover)
-        crate.addChoice("Use the key", story: .Monster)
+        crate.addChoice(title: "Explore the Rover", page: rover)
+        crate.addChoice(title: "Use the key", story: .Monster)
         
         return returnTrip
     }
